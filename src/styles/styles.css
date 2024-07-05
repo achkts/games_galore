@@ -2,3 +2,22 @@
 #pageName {
     color: gray;
 }
+
+header{
+    a {
+        text-decoration: none;
+    }
+    a:hover {
+        text-decoration: underline;
+    }
+
+    .active {
+        font-weight: bold;
+    }
+}
+
+#gamesListing {
+    display: grid;
+    grid-template-columns: 1fr 1fr 100px;
+
+}

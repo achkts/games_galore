@@ -5,7 +5,10 @@
 
     <link rel="stylesheet" href="/styles/styles.css">
     <script src="/scripts/storage.js"></script>
-    <script src="/scripts/listeners.js"></script>
+    <script src="/scripts/render-helpers.js"></script>
+    <script src="/scripts/games-render.js"></script>
+    <script src="/scripts/family-render.js"></script>
+    <script src="/scripts/session-render.js"></script>
 </head>
 
 <body>
@@ -14,9 +17,9 @@
         <h1>Games Galore - <span id="pageName">Page</span></h1>
 
         <div>
-            <a>Games</a>
-            <a>Family Members</a>
-            <a>Play Sessions</a>
+            <a href="#" id="gamesButton">Games</a>
+            <a href="#" id="membersButton">Family Members</a>
+            <a href="#" id="sessionsButton">Play Sessions</a>
         </div>
 
     </header>
@@ -25,5 +28,5 @@
     </div>
 </div>
 </body>
-
+<script src="/scripts/listeners.js"></script>
 </html> 
