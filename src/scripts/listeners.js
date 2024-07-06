@@ -1,4 +1,4 @@
-
+// Add event listeners for buttons.
 const gamesButton = document.getElementById('gamesButton');
 gamesButton.addEventListener('click', window.games.render);
 
