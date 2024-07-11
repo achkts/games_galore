@@ -3,7 +3,7 @@ const gamesButton = document.getElementById('gamesButton');
 gamesButton.addEventListener('click', window.games.render);
 
 const membersButton = document.getElementById('membersButton');
-membersButton.addEventListener('click', window.family.render);
+membersButton.addEventListener('click', window.members.render);
 
 const sessionsButton = document.getElementById('sessionsButton');
 sessionsButton.addEventListener('click', window.sessions.render);

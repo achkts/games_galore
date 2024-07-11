@@ -42,8 +42,13 @@ header{
 
 #gamesListing {
     font-family: var(--paragraph-font);
+    color: var(--paragraph-color-on-color);
     display: grid;
-    grid-template-columns: 1fr 1fr 100px;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 100px;
     background-color: #218380;
     margin: 25px;
+    div[title] {
+        grid-column-start: 1;
+    }
 }
+

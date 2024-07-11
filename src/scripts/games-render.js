@@ -1,8 +1,12 @@
 const renderGameDetails = (games) => {
     return games.map(g => {
         return `
+            
             <div title="${g.name} (${g.id})">${g.name}</div>
-            <div>Details...</div>
+            <div>${g.genre}</div>
+            <div>${g.type}</div>
+            <div>${g.numPlayers}</div>
+            <div>${g.storageLocation}</div>
             <div>
                 <button onclick="this.parentNode.querySelector('dialog').showModal()">Delete</button>
                 <dialog>
@@ -36,16 +40,23 @@ function renderGames(event) {
                 </div>
                 
             </div>
-            <div id="gamesListing">${renderGameDetails(games)}</div>`
+            <div id="gamesListing">
+                <div>Title</div>
+                <div>Genre</div>
+                <div>Type</div>
+                <div># of Players</div>
+                <div>Storage Location</div>
+            
+            ${renderGameDetails(games)}</div>`
 }
 
 function renderAddGame() {
     return `
     <div>
         <form>
-            <labe>Name
+            <label>Name
                 <input name="name">
-            </labe>
+            </label>
     
             <button onclick="this.dispatchEvent(gg.event('addGame', {form: new FormData(this.closest('form'))}))">Add Game</button>
             <button onclick="event.target.closest('dialog').close()">Cancel</button>
