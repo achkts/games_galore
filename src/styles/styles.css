@@ -1,14 +1,35 @@
 /* https://coolors.co/palette/ffbc42-d81159-8f2d56-218380-73d2de */
-
+:root {
+    --primary-color: #218380;
+    --secondary-color: #8f2d56;
+    --accent1-color: #ffbc42;
+    --accent2-color: #d81159;
+    --heading-font: 'Didot', 'Didot LT STD', 'Hoefler Text', 'Garamond', 'Calisto MT', 'Times New Roman', serif;
+    --paragraph-font: 'Georgia', 'Times', 'Times New Roman', serif;
+    --headline-color-on-white: var(--secondary-color);
+    --headline-color-on-color: white;
+    --paragraph-color-on-white: var(--primary-color);
+    --paragraph-color-on-color: white;
+    --paragraph-background-color: var(--accent1-color);
+    --nav-link-color: white;
+    --nav-background-color: var(--accent2-color);
+    --nav-hover-link-color: white;
+    --nav-hover-background-color: var(--secondary-color);
+}
 
 
 #pageName {
-    color: gray;
+    font-family: var(--heading-font);
+    color: var(--secondary-color);
 }
 
 header{
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: white;
     a {
         text-decoration: none;
+        font-family: var(--paragraph-font);
     }
     a:hover {
         text-decoration: underline;
@@ -20,7 +41,9 @@ header{
 }
 
 #gamesListing {
+    font-family: var(--paragraph-font);
     display: grid;
     grid-template-columns: 1fr 1fr 100px;
-
+    background-color: #218380;
+    margin: 25px;
 }
