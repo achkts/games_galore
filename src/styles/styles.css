@@ -17,6 +17,10 @@
     --nav-hover-background-color: var(--secondary-color);
 }
 
+body {
+    background-color: lightblue;
+    background-image: ;
+}
 
 #pageName {
     font-family: var(--heading-font);
@@ -30,9 +34,14 @@ header{
     a {
         text-decoration: none;
         font-family: var(--paragraph-font);
+        background-color: var(--nav-link-color);
+        transition: all 1s ease-in;
+        
+
     }
     a:hover {
         text-decoration: underline;
+        background-color: #ffbc42;
     }
 
     .active {

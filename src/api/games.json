@@ -1,0 +1,58 @@
+[
+    {
+        "name": "Settlers of Catan", 
+        "id": 1, 
+        "genre": "Board Game", 
+        "type": "Multiplayer", 
+        "numPlayers": "2-8", 
+        "storageLocation": "Toy Room"
+    },
+    {   
+        "name": "Monopoly", 
+        "id": 2, 
+        "genre": "Board Game", 
+        "type": "Multiplayer", 
+        "numPlayers": "2-8", 
+        "storageLocation": "Storage Room"
+    },
+    {   
+        "name": "Candy land", 
+        "id": 3, 
+        "genre": "Board Game", 
+        "type": "Multiplayer", 
+        "numPlayers": "2-8", 
+        "storageLocation": "Toy Room"
+    },
+    {   
+        "name": "Tennis", 
+        "id": 4, 
+        "genre": "Outdoor Game", 
+        "type": "Multiplayer", 
+        "numPlayers": "2", 
+        "storageLocation": "Garage"
+    },
+    {   
+        "name": "Exploding Kittens", 
+        "id": 5, 
+        "genre": "Card Game", 
+        "type": "Multiplayer", 
+        "numPlayers": "2-6", 
+        "storageLocation": "Toy Room"
+    },
+    {   
+        "name": "Cave Man Poetry", 
+        "id": 6, 
+        "genre": "Card Game", 
+        "type": "Multiplayer", 
+        "numPlayers": "2-8", 
+        "storageLocation": "Office"
+    },
+    {   
+        "name": "Forbidden Desert", 
+        "id": 7, 
+        "genre": "Board Game", 
+        "type": "Multiplayer", 
+        "numPlayers": "2-8", 
+        "storageLocation": "Kitchen Shelves"
+    }
+]

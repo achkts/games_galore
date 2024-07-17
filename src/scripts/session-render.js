@@ -3,12 +3,13 @@ const renderSessionDetails = (sessions) => {
         return `
         <div>${s.name}</div>
         <div>${s.sessionDate}</div>
-        <div>${s.memberIds}</div>
+        <div>${window.storage.getGameNameById(s.gameId)}</div>
+        <div>${s.memberIds.map(mId => " " + window.storage.getMemberNameById(mId))}</div>
         <div>
             <button onclick="this.parentNode.querySelector('dialog').showModal()">Delete</button>    
             <dialog>
                 <div>Are you sure you want to delete ${s.name}?</div>
-                <button onclick="this.dispatchEvent(gg.event('deleteSession', {id: ${s.name}}))">Yes, Delete</button>
+                <button onclick="this.dispatchEvent(gg.event('deleteSession', {id: ${s.id}}))">Yes, Delete</button>
                 <button onclick="event.target.closest('dialog').close()">No, Cancel</button>
             </dialog>
         </div>
@@ -39,6 +40,7 @@ function renderSessions() {
         <div>Date</div>
         <div>Game Title</div>
         <div>Players</div>
+        <div id="membersListing">${renderSessionDetails(sessions)}</div>
         `
 }
 
@@ -46,17 +48,22 @@ function renderAddSession() {
     return `
     <div>
         <form>
-            <label>Session Name
-                <input name="name">
+            <label>Session Description
+                <input name="description">
             </label>
             <label>Date
-                <input date="date">
+                <input type="date" name="date">
             </label>
             <label>Game Title
-                <input name="name">
+                <select name="gameId">
+                <option value=""></option>
+                ${window.storage.games.map(game => "<option value='"+game.id+"'>"+ game.name +"</option>").join()}
+                </select>
             </label>
             <label>Players
-                <input name="name">
+                <select name="memberIds" multiple>
+                ${window.storage.members.map(member => "<option value='"+member.id+"'>"+ member.name +"</option>").join()}
+                </select> 
             </label>
 
             <button onclick="this.dispatchEvent(gg.event('addSession', {form: new FormData(this.closest('form'))}))"> Add Session</button>

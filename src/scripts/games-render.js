@@ -25,12 +25,14 @@ function renderGames(event) {
         renderHelper.addClass(event.target, 'active')
     }
 
+    console.log('where are you games?', storage);
     const games = storage.games
 
     const pageName = document.getElementById('pageName')
     pageName.textContent = 'Games'
 
     const content = document.getElementById('content')
+    
     content.innerHTML = `
             <div id="pageHeader">
                 <div>Games (${games.length} Total)</div>
@@ -57,6 +59,52 @@ function renderAddGame() {
             <label>Name
                 <input name="name">
             </label>
+            <label>Genre
+                <select name="genre">
+                <option value=""></option>
+                <option value="Board Game">Board Game</option>
+                <option value="Card Game">Card Game</option>
+                <option value="Dice Game">Dice Game</option>
+                <option value="Outdoor Game">Outdoor Game</option>
+                <option value="Puzzle">Puzzle</option>
+                <option value="Video Game">Video Game</option>
+                </select>
+            </label>
+            <label>Type
+                <select name="type">
+                <option value=""></option>
+                <option value="Single-Player">Single-Player</option>
+                <option value="Cooperative">Cooperative</option>
+                <option value="Competitive">Competitive</option>
+                </select>
+            </label>
+            <label># of Players
+                <select name="numPlayers">
+                <option value=""></option>
+                <option value="1">1</option>
+                <option value="2">2</option>  
+                <option value="2-4">2-4</option>
+                <option value="2-5">2-5</option>  
+                <option value="2-6">2-6</option>  
+                <option value="2-8">2-8</option>
+                <option value="3-8">3-8</option>    
+                </select>
+            </label>
+            <label>Storage Location
+                <select name="storageLocation">
+                <option value=""></option>
+                <option value="Computer">Computer</option>
+                <option value="Downstairs Shelves">Downstairs Shelves</option>
+                <option value="Garage">Garage</option>
+                <option value="Nintendo Switch">Nintendo Switch</option>
+                <option value="Steam Deck">Steam Deck</option>
+                <option value="Storage Room">Storage Room</option>
+                <option value="Upstairs Shelves">Upstairs Shelves</option>
+                </select>
+            </label>
+                
+               
+            
     
             <button onclick="this.dispatchEvent(gg.event('addGame', {form: new FormData(this.closest('form'))}))">Add Game</button>
             <button onclick="event.target.closest('dialog').close()">Cancel</button>

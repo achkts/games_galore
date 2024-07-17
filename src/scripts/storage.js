@@ -1,37 +1,16 @@
-const games = [
-    {name: 'Settlers of Catan', id: 1, genre: 'Board Game', type: 'Multiplayer', numPlayers: '2-8', storageLocation: 'Toy Room'},
-    {name: 'Monopoly', id: 2, genre: 'Board Game', type: 'Multiplayer', numPlayers: '2-8', storageLocation: 'Storage Room'},
-    {name: 'Candy land', id: 3, genre: 'Board Game', type: 'Multiplayer', numPlayers: '2-8', storageLocation: 'Toy Room'},
-    {name: 'Tennis', id: 4, genre: 'Outdoor Game', type: 'Multiplayer', numPlayers: '2', storageLocation: 'Garage'},
-    {name: 'Exploding Kittens', id: 5, genre: 'Card Game', type: 'Multiplayer', numPlayers: '2-6', storageLocation: 'Toy Room'},
-    {name: 'Cave Man Poetry', id: 6, genre: 'Card Game', type: 'Multiplayer', numPlayers: '2-8', storageLocation: 'Office'},
-    {name: 'Forbidden Desert', id: 7, genre: 'Board Game', type: 'Multiplayer', numPlayers: '2-8', storageLocation: 'Kitchen Shelves'}
-]
-const members = [
-    {name: 'Adam', id: 1, age: 34},
-    {name: 'Benjamin', id: 2, age: 32},
-    {name: 'Caleb', id: 3, age: 30},
-    {name: 'Dan', id: 4, age: 28},
-    {name: 'Ethan', id: 5, age: 15},
-    {name: 'Frank', id: 6, age: 55},
-    {name: 'Gideon', id: 7, age: 8},
-    {name: 'Millie', id: 8, age: 4},
-]
-const sessions = [
-    {name: 'Date Night', sessionDate: '2024-07-04', gameId: 3, memberIds: [1,8]},
-    {name: 'Forbidden Desert 20', sessionDate: '2024-06-03', gameId: 7, memberIds: [5,6,7]},
-    {name: 'Date Night', sessionDate: '2024-07-11', gameId: 3, memberIds: [8, 1]},
-]
+async function fetchAPI(file) {
+    
+    const response = await fetch("/api/"+file+".json")
+    const games = await response.json()
+    return games;
+
+}
 
 window.storage = {
-    games: games,
-    members: members,
-    sessions: sessions,
-    default: {
-        games: games,
-        members: members,
-        sessions: sessions,
-    },
+    games: [],
+    members: [],
+    sessions: [],
+    
 
     saveToLocalStorage: () => {
         localStorage.setItem('games', JSON.stringify(storage.games))
@@ -40,14 +19,30 @@ window.storage = {
     },
     loadFromLocalStorage: () => {
         try {
-            storage.games = JSON.parse(localStorage.getItem('games')) ?? games
-            storage.members = JSON.parse(localStorage.getItem('members')) ?? members
-            storage.sessions = JSON.parse(localStorage.getItem('sessions')) ?? sessions
+            storage.games = JSON.parse(localStorage.getItem('games')) ?? [] 
+            if (storage.games.length == 0){
+                fetchAPI("games").then(games => storage.games = games)
+            }
+            storage.members = JSON.parse(localStorage.getItem('members')) ?? fetchAPI("members").then(members => storage.members = members)
+            storage.sessions = JSON.parse(localStorage.getItem('sessions')) ?? fetchAPI("sessions").then(sessions => storage.sessions = sessions)
         } catch (e) {
-            console.error('Error loading from local storage')
+            console.error('Error loading from local storage', e)
         }
 
+    },
+    getGameNameById: (gameId) => {
+        const gameMatches = storage.games.filter(game => game.id == gameId)
+        console.log("gammey", gameId, games);
+        return gameMatches.length > 0 ? gameMatches[0].name : "Unknown Game Id: " + gameId;
+    },
+    getMemberNameById: (memberId) => {
+        const memberMatches = storage.members.filter(member => member.id == memberId)
+        console.log("memberzz", memberId, members);
+        return memberMatches.length > 0 ? memberMatches[0].name : "Unknown Member Id: " + memberId;
     }
+
+
+
 }
 
 storage.loadFromLocalStorage()
