@@ -36,18 +36,18 @@ function renderGames(event) {
     content.innerHTML = `
             <div id="pageHeader">
                 <div>Games (${games.length} Total)</div>
-                <div>
+                <div id="addButton">
                     <button onclick="this.parentNode.querySelector('dialog').showModal()">Add Game</button>
                     <dialog>${renderAddGame()}</dialog>
                 </div>
                 
             </div>
             <div id="gamesListing">
-                <div>Title</div>
-                <div>Genre</div>
-                <div>Type</div>
-                <div># of Players</div>
-                <div>Storage Location</div>
+                <div class="tableHeader">Title</div>
+                <div class="tableHeader">Genre</div>
+                <div class="tableHeader">Type</div>
+                <div class="tableHeader"># of Players</div>
+                <div class="tableHeader">Storage Location</div>
             
             ${renderGameDetails(games)}</div>`
 }
@@ -55,7 +55,7 @@ function renderGames(event) {
 function renderAddGame() {
     return `
     <div>
-        <form>
+        <form class="addForm">
             <label>Name
                 <input name="name">
             </label>
@@ -102,12 +102,10 @@ function renderAddGame() {
                 <option value="Upstairs Shelves">Upstairs Shelves</option>
                 </select>
             </label>
-                
-               
-            
-    
-            <button onclick="this.dispatchEvent(gg.event('addGame', {form: new FormData(this.closest('form'))}))">Add Game</button>
-            <button onclick="event.target.closest('dialog').close()">Cancel</button>
+            <div class="modalButtons">
+                <button onclick="this.dispatchEvent(gg.event('addGame', {form: new FormData(this.closest('form'))}))">Add Game</button>
+                <button onclick="event.target.closest('dialog').close()">Cancel</button>
+            </div>               
         </form>
     </div>
     `

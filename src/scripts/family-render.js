@@ -1,31 +1,3 @@
-// const renderFamilyDetails = (family) => {
-//     return "Hi"
-// }
-
-// const renderFamily = (event) => {
-//     renderHelper.forEachSibling(event.target, (sib) => window.renderHelper.removeClass(sib,'active'))
-//     renderHelper.addClass(event.target, 'active')
-
-//     const family = storage.family
-
-//     const pageName = document.getElementById('pageName')
-//     pageName.textContent = 'Family members'
-
-//     const familyDetails = renderFamilyDetails(family)
-
-//     const content = document.getElementById('content')
-//     content.innerHTML = `
-//     <div>
-//         Hello family members!
-//     </div>${familyDetails}
-//     `
-// }
-
-
-// window.family = {
-//     render: renderFamily
-// }
-
 const renderMemberDetails = (members) => {
     return members.map(m => {
         return `
@@ -58,31 +30,33 @@ function renderMembers(event) {
     content.innerHTML = `
             <div id="pageHeader">
                 <div>Members (${members.length} Total)</div>
-                <div>
+                <div id="addButton">
                     <button onclick="this.parentNode.querySelector('dialog').showModal()">Add Member</button>
                     <dialog>${renderAddMember()}</dialog>
                 </div>
                 
             </div>
-            <div>Name</div>
-            <div>Age</div>
-            <div id="membersListing">${renderMemberDetails(members)}</div>
+            <div id="membersListing">
+            <div class="tableHeader">Name</div>
+            <div class="tableHeader">Age</div>
+            ${renderMemberDetails(members)}</div>
             `
 }
 
 function renderAddMember() {
     return `
     <div>
-        <form>
+        <form class="addForm">
             <label>Name
                 <input name="name">
             </label>
             <label>Age
                 <input name="age">
             </label>
-    
-            <button onclick="this.dispatchEvent(gg.event('addMember', {form: new FormData(this.closest('form'))}))">Add Member</button>
-            <button onclick="event.target.closest('dialog').close()">Cancel</button>
+            <div class="modalButtons">
+                <button onclick="this.dispatchEvent(gg.event('addMember', {form: new FormData(this.closest('form'))}))">Add Member</button>
+                <button onclick="event.target.closest('dialog').close()">Cancel</button>
+            </div>
         </form>
     </div>
     `
