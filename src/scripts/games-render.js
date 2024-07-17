@@ -4,8 +4,8 @@ const renderGameDetails = (games) => {
             
             <div title="${g.name} (${g.id})">${g.name}</div>
             <div>${g.genre}</div>
-            <div>${g.type}</div>
-            <div>${g.numPlayers}</div>
+            <div class="mobileHidden">${g.type}</div>
+            <div class="mobileHidden">${g.numPlayers}</div>
             <div>${g.storageLocation}</div>
             <div>
                 <button onclick="this.parentNode.querySelector('dialog').showModal()">Delete</button>
@@ -45,9 +45,9 @@ function renderGames(event) {
             <div id="gamesListing">
                 <div class="tableHeader">Title</div>
                 <div class="tableHeader">Genre</div>
-                <div class="tableHeader">Type</div>
-                <div class="tableHeader"># of Players</div>
-                <div class="tableHeader">Storage Location</div>
+                <div class="tableHeader mobileHidden">Type</div>
+                <div class="tableHeader mobileHidden"># of Players</div>
+                <div class="tableHeader" >Storage Location</div>
             
             ${renderGameDetails(games)}</div>`
 }

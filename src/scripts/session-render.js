@@ -2,7 +2,7 @@ const renderSessionDetails = (sessions) => {
     return sessions.map(s => {
         return `
         <div title="">${s.name}</div>
-        <div>${s.sessionDate}</div>
+        <div class="mobileHidden">${s.sessionDate}</div>
         <div>${window.storage.getGameNameById(s.gameId)}</div>
         <div>${s.memberIds.map(mId => " " + window.storage.getMemberNameById(mId))}</div>
         <div>
@@ -37,7 +37,7 @@ function renderSessions() {
         </div>
         <div id="sessionsListing">
         <div class="tableHeader">Session Name</div>
-        <div class="tableHeader">Date</div>
+        <div class="tableHeader mobileHidden">Date</div>
         <div class="tableHeader">Game Title</div>
         <div class="tableHeader">Players</div>
         ${renderSessionDetails(sessions)}</div>
